@@ -39,6 +39,26 @@ class Movie extends Base {
     );
   }
 
+  static async findById(id) {
+    const movie = await this.findOne({
+      where: { id },
+      include: {
+        association: 'Actors',
+        through: {
+          attributes: [],
+        },
+      },
+    });
+
+    if (!movie) {
+      throw new NotFoundError(
+        `There is no ${this.name} with id = "${id}"`,
+      );
+    }
+
+    return movie;
+  }
+
   static async getSortedList() {
     return this.findAll({ order: [['title', 'ASC']] });
   }
