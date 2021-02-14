@@ -136,8 +136,7 @@ class MovieService {
       );
     }
 
-    const movie = await this.movieModel.findById(validId);
-    await movie.destroy();
+    await this.movieModel.delete(validId);
   }
 }
 

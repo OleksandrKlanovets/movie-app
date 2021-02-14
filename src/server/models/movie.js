@@ -58,6 +58,11 @@ class Movie extends Base {
   static async addMultipleMovies(moviesData) {
     return this.bulkCreate(moviesData);
   }
+
+  static async delete(id) {
+    const movie = await this.findById(id);
+    return movie.destroy();
+  }
 }
 
 module.exports = Movie;
