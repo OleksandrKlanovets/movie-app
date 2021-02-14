@@ -3,19 +3,6 @@
 require('dotenv').config();
 
 module.exports = {
-  /*
-  development: {
-    username: 'username',
-    password: 'password',
-    database: 'movie_app_db',
-    host: '127.0.0.1',
-    port: 5432,
-    dialect: 'postgres',
-    dialectOptions: {
-      bigNumberStrings: true
-    },
-  },
-  */
   development: {
     username: 'postgres',
     password: 'postgres',

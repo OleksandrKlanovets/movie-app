@@ -5,7 +5,7 @@ const Movie = require('./movie');
 const Actor = require('./actor');
 const MovieActor = require('./movieActor');
 
-const initModels = (dbConfig) => {
+const initModels = (dbConfig, logging = console.log) => {
   const {
     database, username, password, dialect, host, port,
   } = dbConfig;
@@ -14,6 +14,7 @@ const initModels = (dbConfig) => {
     host,
     port,
     dialect,
+    logging,
   });
 
   const models = {
