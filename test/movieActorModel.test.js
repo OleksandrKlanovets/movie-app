@@ -70,7 +70,7 @@ describe('MovieActorModel', () => {
       const partiallyNewMovieActors = [
         {
           movieId: '4c785cd1-6144-4d8f-9a67-c95ccfc23e1d',
-          // Clevon Little already in the cast:
+          // Clevon Little is already in the cast:
           actorId: '9b57a10e-bb0d-4bd6-b77e-75d91ee68071',
         },
         {

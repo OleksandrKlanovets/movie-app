@@ -61,7 +61,7 @@ describe('ActorModel', () => {
     it('Actor not found', async () => {
       const NON_EXISTING_ID = '79b5041c-d804-4938-9218-5598216050f0';
       assert.rejects(
-        async () => Actor.findById(NON_EXISTING_ID),
+        () => Actor.findById(NON_EXISTING_ID),
         (err) => {
           assert(err instanceof NotFoundError);
           assert.strictEqual(err.message, `There is no Actor with id = "${NON_EXISTING_ID}"`);
@@ -94,7 +94,7 @@ describe('ActorModel', () => {
     it('Movies not found', async () => {
       const fakeActor = 'fake';
       assert.rejects(
-        async () => Actor.getActorMovies(fakeActor),
+        () => Actor.getActorMovies(fakeActor),
         (err) => {
           assert(err instanceof NotFoundError);
           assert.strictEqual(err.message, `There is no movie with actor = "${fakeActor}"`);

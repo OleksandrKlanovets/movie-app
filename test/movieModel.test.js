@@ -74,7 +74,7 @@ describe('MovieModel', () => {
     it('Movie not found', async () => {
       const NON_EXISTING_ID = '79b5041c-d804-4938-9218-5598216050f0';
       assert.rejects(
-        async () => Movie.findById(NON_EXISTING_ID),
+        () => Movie.findById(NON_EXISTING_ID),
         (err) => {
           assert(err instanceof NotFoundError);
           assert.strictEqual(err.message, `There is no Movie with id = "${NON_EXISTING_ID}"`);
@@ -117,7 +117,7 @@ describe('MovieModel', () => {
     it('Movie not found', async () => {
       const NON_EXISTING_TITLE = '79b5041c-d804-4938-9218-5598216050f0';
       assert.rejects(
-        async () => Movie.findByTitle(NON_EXISTING_TITLE),
+        () => Movie.findByTitle(NON_EXISTING_TITLE),
         (err) => {
           assert(err instanceof NotFoundError);
           assert.strictEqual(err.message, `There is no movie with title = "${NON_EXISTING_TITLE}"`);
@@ -159,7 +159,7 @@ describe('MovieModel', () => {
     it('Deletes non-existing movie', async () => {
       const NON_EXISTING_ID = '79b5041c-d804-4938-9218-5598216050f0';
       assert.rejects(
-        async () => Movie.findById(NON_EXISTING_ID),
+        () => Movie.findById(NON_EXISTING_ID),
         (err) => {
           assert(err instanceof NotFoundError);
           assert.strictEqual(err.message, `There is no Movie with id = "${NON_EXISTING_ID}"`);
