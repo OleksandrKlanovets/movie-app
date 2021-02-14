@@ -1,8 +1,9 @@
 'use strict';
 
-require('dotenv').config(); 
+require('dotenv').config();
 
 module.exports = {
+  /*
   development: {
     username: 'username',
     password: 'password',
@@ -12,6 +13,18 @@ module.exports = {
     dialect: 'postgres',
     dialectOptions: {
       bigNumberStrings: true
+    },
+  },
+  */
+  development: {
+    username: 'postgres',
+    password: 'postgres',
+    database: 'movie_app_db',
+    host: '127.0.0.1',
+    port: 5432,
+    dialect: 'postgres',
+    dialectOptions: {
+      bigNumberStrings: true,
     },
   },
   test: {
