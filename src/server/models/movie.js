@@ -55,6 +55,10 @@ class Movie extends Base {
     return movies;
   }
 
+  static async addMovie(movieData) {
+    return this.create(movieData);
+  }
+
   static async addMultipleMovies(moviesData) {
     return this.bulkCreate(moviesData);
   }
