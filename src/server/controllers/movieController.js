@@ -52,7 +52,9 @@ class MovieController {
       const movies = await this.movieService.findMoviesByTitle(title);
       res.send(movies);
     } catch (error) {
-      if (error instanceof WrongParameterValueError) {
+      if (error instanceof NotFoundError) {
+        res.status(404).json({ message: error.message });
+      } else if (error instanceof WrongParameterValueError) {
         res.status(400).json({ message: error.message });
       } else {
         this.logger.error(error.message);
