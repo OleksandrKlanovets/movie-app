@@ -14,7 +14,10 @@ const getMovieRouter = require('./routes/movieRoute');
 
 const { Movie, Actor, MovieActor, sequelize } = initModels(dbConfig[appConfig.NODE_ENV]);
 const movieService = new MovieService(Movie, Actor, MovieActor);
-const logger = new Logger('logs');
+
+const LOGS_PATH = 'logs';
+const logger = new Logger(LOGS_PATH);
+
 const movieController = new MovieController(movieService, logger);
 const movieRouter = getMovieRouter(movieController);
 
