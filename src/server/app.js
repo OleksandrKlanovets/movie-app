@@ -12,7 +12,9 @@ const MovieService = require('./services/movieService');
 const MovieController = require('./controllers/movieController');
 const getMovieRouter = require('./routes/movieRoute');
 
-const { Movie, Actor, MovieActor, sequelize } = initModels(dbConfig[appConfig.NODE_ENV]);
+const {
+  Movie, Actor, MovieActor, sequelize,
+} = initModels(dbConfig[appConfig.NODE_ENV]);
 const movieService = new MovieService(Movie, Actor, MovieActor);
 
 const LOGS_PATH = 'logs';
@@ -29,7 +31,7 @@ app.use('/api', movieRouter);
 
 const server = app.listen(
   appConfig.PORT,
-  () => logger.log(`Started server at port ${appConfig.PORT}...`)
+  () => logger.log(`Started server at port ${appConfig.PORT}...`),
 );
 
 const connections = new Map();
@@ -79,7 +81,7 @@ process.on('SIGINT', async () => {
     logger.log('Server has been stopped successfully.');
     await logger.close();
     process.exit(0);
-  } else  {
+  } else {
     process.exit(0);
   }
 });

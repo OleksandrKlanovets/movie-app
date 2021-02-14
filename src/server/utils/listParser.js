@@ -10,8 +10,8 @@ const parseItem = (item) => item
   .filter((property) => property.length > 1)
   .reduce((movie, property, i) => {
     const value = property.split(/:\s*(.+)/)[1];
+    /* eslint-disable-next-line */
     movie[KEYS[i]] = KEYS[i] === 'actors' ? value.split(/,\s*/) : value;
-    console.log(movie);
     return movie;
   }, {});
 
@@ -24,6 +24,7 @@ const parseList = (buffer) => buffer
 const getAllActors = (parsedList) => {
   const actorsSet = parsedList.reduce(
     (actors, item) => {
+      /* eslint-disable-next-line */
       for (const actor of item.actors) actors.add(actor);
       return actors;
     },

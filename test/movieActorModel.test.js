@@ -6,7 +6,7 @@ const initModels = require('../src/server/models/initModels');
 
 const {
   Movie, Actor, MovieActor,
-} = initModels(dbConfig['test'], false);
+} = initModels(dbConfig.test, false);
 
 describe('MovieActorModel', () => {
   const movies = [

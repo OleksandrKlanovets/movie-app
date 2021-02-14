@@ -8,7 +8,7 @@ const { NotFoundError } = require('../src/server/errors');
 
 const {
   Movie, Actor, MovieActor,
-} = initModels(dbConfig['test'], false);
+} = initModels(dbConfig.test, false);
 
 describe('MovieModel', () => {
   const movies = [
@@ -55,21 +55,26 @@ describe('MovieModel', () => {
     const EXISTING_ID = '405fa745-150f-463d-998b-de73a20c4fe1';
     it('Gets an existing movie', async () => {
       const movie = await Movie.findById(EXISTING_ID);
-      const { id, title, year, format } = movie;
+      const {
+        id, title, year, format,
+      } = movie;
       assert.deepStrictEqual(
-        { id, title, year, format }, 
+        {
+          id, title, year, format,
+        },
         {
           id: '405fa745-150f-463d-998b-de73a20c4fe1',
           title: 'Blazing Saddles',
           year: 1974,
           format: 'VHS',
-        });
+        },
+      );
     });
 
     it('Movie not found', async () => {
       const NON_EXISTING_ID = '79b5041c-d804-4938-9218-5598216050f0';
-      await assert.rejects(
-        async () => await Movie.findById(NON_EXISTING_ID),
+      assert.rejects(
+        async () => Movie.findById(NON_EXISTING_ID),
         (err) => {
           assert(err instanceof NotFoundError);
           assert.strictEqual(err.message, `There is no Movie with id = "${NON_EXISTING_ID}"`);
@@ -81,34 +86,38 @@ describe('MovieModel', () => {
 
   describe('getSortedList', () => {
     it('Gets list', async () => {
-      const movies = await Movie.getSortedList();
-      assert.strictEqual(movies.length, 2);
-      assert.strictEqual(movies[0].title, 'Blazing Saddles');
-      assert.strictEqual(movies[1].title, 'Casablanca');
+      const moviesList = await Movie.getSortedList();
+      assert.strictEqual(moviesList.length, 2);
+      assert.strictEqual(moviesList[0].title, 'Blazing Saddles');
+      assert.strictEqual(moviesList[1].title, 'Casablanca');
     });
   });
-  
+
   describe('findByTitle', () => {
     it('Get an existing movie by title', async () => {
       const EXISTING_TITLE = 'Blazing Saddles';
       const matchingMovies = await Movie.findByTitle(EXISTING_TITLE);
       assert.strictEqual(matchingMovies.length, 1);
-      const { id, title, year, format } = matchingMovies[0];
+      const {
+        id, title, year, format,
+      } = matchingMovies[0];
       assert.deepStrictEqual(
-        { id, title, year, format },
+        {
+          id, title, year, format,
+        },
         {
           id: '405fa745-150f-463d-998b-de73a20c4fe1',
           title: 'Blazing Saddles',
           year: 1974,
           format: 'VHS',
-        }
+        },
       );
     });
 
     it('Movie not found', async () => {
       const NON_EXISTING_TITLE = '79b5041c-d804-4938-9218-5598216050f0';
-      await assert.rejects(
-        async () => await Movie.findByTitle(NON_EXISTING_TITLE),
+      assert.rejects(
+        async () => Movie.findByTitle(NON_EXISTING_TITLE),
         (err) => {
           assert(err instanceof NotFoundError);
           assert.strictEqual(err.message, `There is no movie with title = "${NON_EXISTING_TITLE}"`);
@@ -149,8 +158,8 @@ describe('MovieModel', () => {
 
     it('Deletes non-existing movie', async () => {
       const NON_EXISTING_ID = '79b5041c-d804-4938-9218-5598216050f0';
-      await assert.rejects(
-        async () => await Movie.findById(NON_EXISTING_ID),
+      assert.rejects(
+        async () => Movie.findById(NON_EXISTING_ID),
         (err) => {
           assert(err instanceof NotFoundError);
           assert.strictEqual(err.message, `There is no Movie with id = "${NON_EXISTING_ID}"`);

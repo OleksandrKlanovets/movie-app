@@ -8,7 +8,7 @@ const { NotFoundError } = require('../src/server/errors');
 
 const {
   Movie, Actor, MovieActor,
-} = initModels(dbConfig['test'], false);
+} = initModels(dbConfig.test, false);
 
 describe('ActorModel', () => {
   const movies = [
@@ -60,8 +60,8 @@ describe('ActorModel', () => {
 
     it('Actor not found', async () => {
       const NON_EXISTING_ID = '79b5041c-d804-4938-9218-5598216050f0';
-      await assert.rejects(
-        async () => await Actor.findById(NON_EXISTING_ID),
+      assert.rejects(
+        async () => Actor.findById(NON_EXISTING_ID),
         (err) => {
           assert(err instanceof NotFoundError);
           assert.strictEqual(err.message, `There is no Actor with id = "${NON_EXISTING_ID}"`);
@@ -74,10 +74,10 @@ describe('ActorModel', () => {
   describe('findByNames', () => {
     it('Gets matching actor records', async () => {
       const names = ['Mel Brooks', 'Clevon Little'];
-      const actors = await Actor.findByNames(names);
-      assert.strictEqual(actors.length, 2);
-      assert(names.includes(actors[0].name));
-      assert(names.includes(actors[1].name));
+      const foundActors = await Actor.findByNames(names);
+      assert.strictEqual(foundActors.length, 2);
+      assert(names.includes(foundActors[0].name));
+      assert(names.includes(foundActors[1].name));
     });
   });
 
@@ -85,16 +85,16 @@ describe('ActorModel', () => {
     it('Gets matching movies records', async () => {
       const actorName = 'Clevon Little';
       const trueMovies = new Set(['Blazing Saddles', 'Casablanca']);
-      const movies = await Actor.getActorMovies(actorName);
-      assert.strictEqual(movies.length, 2);
-      assert(trueMovies.has(movies[0].title));
-      assert(trueMovies.has(movies[1].title));
+      const actorMovies = await Actor.getActorMovies(actorName);
+      assert.strictEqual(actorMovies.length, 2);
+      assert(trueMovies.has(actorMovies[0].title));
+      assert(trueMovies.has(actorMovies[1].title));
     });
 
     it('Movies not found', async () => {
       const fakeActor = 'fake';
-      await assert.rejects(
-        async () => await Actor.getActorMovies(fakeActor),
+      assert.rejects(
+        async () => Actor.getActorMovies(fakeActor),
         (err) => {
           assert(err instanceof NotFoundError);
           assert.strictEqual(err.message, `There is no movie with actor = "${fakeActor}"`);

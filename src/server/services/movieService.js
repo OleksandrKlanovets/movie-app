@@ -115,6 +115,7 @@ class MovieService {
     actorsToAdd.forEach((actor) => nameToIdMap.set(actor.name, actor.id));
 
     const movieActorIdPairs = [];
+    /* eslint-disable-next-line */
     for (let i = 0; i < addedMovies.length; i++) {
       const movieId = addedMovies[i].id;
       parsedList[i].actors.forEach((actor) => {

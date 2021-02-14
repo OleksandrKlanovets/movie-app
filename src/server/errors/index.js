@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 'use strict';
 
 class NotFoundError extends Error { }

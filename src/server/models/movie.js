@@ -34,8 +34,8 @@ class Movie extends Base {
       {
         through: 'MoviesActors',
         foreignKey: 'movieId',
-        timestamps: false
-      }
+        timestamps: false,
+      },
     );
   }
 

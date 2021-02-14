@@ -15,7 +15,7 @@ const movieListValidationSchema = Joi.array().items(
   movieValidationSchema,
 );
 
-module.exports = { 
+module.exports = {
   movieValidationSchema,
   movieListValidationSchema,
 };

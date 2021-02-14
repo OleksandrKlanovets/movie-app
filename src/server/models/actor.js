@@ -27,15 +27,15 @@ class Actor extends Base {
       {
         through: 'MoviesActors',
         foreignKey: 'actorId',
-        timestamps: false
-      }
+        timestamps: false,
+      },
     );
   }
 
   static async findByNames(names) {
     return this.findAll({
       where: {
-        name: { [Op.in]: names }
+        name: { [Op.in]: names },
       },
     });
   }

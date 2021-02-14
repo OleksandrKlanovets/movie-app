@@ -21,7 +21,9 @@ class MovieActor extends Sequelize.Model {
   static init(sequelize, options = {}) {
     super.init(
       this.schema,
-      { ...options, sequelize, timestamps: false, tableName: 'MoviesActors' },
+      {
+        ...options, sequelize, timestamps: false, tableName: 'MoviesActors',
+      },
     );
   }
 

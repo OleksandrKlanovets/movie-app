@@ -116,7 +116,6 @@ class MovieController {
           await this.movieService.importFromFile(req.file);
           res.json({ message: 'Imported successfully.' });
         } catch (error) {
-          console.log(error);
           if (error instanceof WrongParameterValueError
               || error instanceof InvalidFileFormatError) {
             res.status(400).json({ message: error.message });
