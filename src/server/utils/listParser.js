@@ -11,6 +11,7 @@ const parseItem = (item) => item
   .reduce((movie, property, i) => {
     const value = property.split(/:\s*(.+)/)[1];
     movie[KEYS[i]] = KEYS[i] === 'actors' ? value.split(/,\s*/) : value;
+    console.log(movie);
     return movie;
   }, {});
 

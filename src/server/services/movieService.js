@@ -2,7 +2,7 @@
 
 const Joi = require('joi');
 const { ValidationError } = require('joi');
-const { WrongParameterValueError } = require('../errors');
+const { WrongParameterValueError, InvalidFileFormatError } = require('../errors');
 const { movieValidationSchema } = require('../schemas/movieValidationSchema');
 const { parseList, getAllActors } = require('../utils/listParser');
 
@@ -96,7 +96,7 @@ class MovieService {
           `Error parsing the file: ${error.details[0].message}`,
         );
       }
-      throw new WrongParameterValueError('Invalid file format.');
+      throw new InvalidFileFormatError(`Invalid file format: ${error.message}`);
     }
 
     const addedMovies = await this.movieModel.addMultipleMovies(
