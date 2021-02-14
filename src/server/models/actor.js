@@ -32,10 +32,6 @@ class Actor extends Base {
     );
   }
 
-  static async findByName(actorName) {
-    return this.findOne({ where: { name: actorName } });
-  }
-
   static async findByNames(names) {
     return this.findAll({
       where: {

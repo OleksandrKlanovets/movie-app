@@ -2,6 +2,7 @@
 
 const { Sequelize } = require('sequelize');
 const Base = require('./base');
+const { NotFoundError } = require('../errors');
 
 class Movie extends Base {
   static schema = {
@@ -43,7 +44,15 @@ class Movie extends Base {
   }
 
   static async findByTitle(title) {
-    return this.findAll({ where: { title } });
+    const movies = await this.findAll({ where: { title } });
+
+    if (!movies || !movies.length) {
+      throw new NotFoundError(
+        `There is no movie with title = "${title}"`,
+      );
+    }
+
+    return movies;
   }
 
   static async addMultipleMovies(moviesData) {

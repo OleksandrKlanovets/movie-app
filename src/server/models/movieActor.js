@@ -26,7 +26,7 @@ class MovieActor extends Sequelize.Model {
   }
 
   static async addMultipleMovieActors(moviesActors) {
-    return this.bulkCreate(moviesActors);
+    return this.bulkCreate(moviesActors, { ignoreDuplicates: true });
   }
 }
 
