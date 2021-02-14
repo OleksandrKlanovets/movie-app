@@ -1,8 +1,7 @@
 'use strict';
 
 const Joi = require('joi');
-const { ValidationError } = require('joi');
-const { WrongParameterValueError, InvalidFileFormatError } = require('../errors');
+const { WrongParameterValueError } = require('../errors');
 const { movieValidationSchema } = require('../schemas/movieValidationSchema');
 const { parseList, getAllActors } = require('../utils/listParser');
 
@@ -72,7 +71,7 @@ class MovieService {
       title, year, format, actors,
     } = movieData;
 
-    const addedMovie = await this.movieModel.create(
+    const addedMovie = await this.movieModel.addMovie(
       { title, year, format },
     );
 
@@ -86,18 +85,7 @@ class MovieService {
   }
 
   async importFromFile(file) {
-    let parsedList;
-
-    try {
-      parsedList = parseList(file.buffer);
-    } catch (error) {
-      if (error instanceof ValidationError) {
-        throw new WrongParameterValueError(
-          `Error parsing the file: ${error.details[0].message}`,
-        );
-      }
-      throw new InvalidFileFormatError(`Invalid file format: ${error.message}`);
-    }
+    const parsedList = parseList(file.buffer);
 
     const addedMovies = await this.movieModel.addMultipleMovies(
       parsedList.map((item) => ({
