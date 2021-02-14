@@ -76,5 +76,7 @@ process.on('SIGINT', async () => {
     logger.log('Server has been stopped successfully.');
     await logger.close();
     process.exit(0);
+  } else  {
+    process.exit(0);
   }
 });
