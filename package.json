@@ -7,7 +7,9 @@
     "start": "NODE_ENV=production node src/server/app.js",
     "start:dev": "NODE_ENV=development node src/server/app.js",
     "start:dev:watch": "NODE_ENV=development nodemon src/server/app.js",
-    "eslint": "npx eslint ./src ./migrations --ext .js,.jsx",
+    "eslint:server": "npx eslint --env node ./src/server ./migrations --ext .js --rule strict:0",
+    "eslint:client": "npx eslint ./src/client --ext .js,.jsx",
+    "eslint:test": "npx eslint --env mocha ./test --ext .js --rule strict:0",
     "test": "mocha"
   },
   "keywords": [],
@@ -23,6 +25,7 @@
     "sequelize": "^6.5.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "eslint": "^7.19.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
@@ -31,6 +34,7 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "mocha": "^8.3.0",
     "nodemon": "^2.0.7",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.2.0",
+    "sinon": "^9.2.4"
   }
 }
