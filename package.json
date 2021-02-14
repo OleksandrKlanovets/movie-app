@@ -4,8 +4,10 @@
   "description": "An app to browse movies (test assignment solution for WebbyLab)",
   "main": "index.js",
   "scripts": {
-    "start": "node src/server/app.js",
-    "eslint": "npx eslint ./src --ext .js,.jsx",
+    "start": "NODE_ENV=production node src/server/app.js",
+    "start:dev": "NODE_ENV=development node src/server/app.js",
+    "start:dev:watch": "NODE_ENV=development nodemon src/server/app.js",
+    "eslint": "npx eslint ./src ./migrations --ext .js,.jsx",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,6 +17,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "joi": "^17.4.0",
+    "multer": "^1.4.2",
     "pg": "^8.5.1",
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.5.0"
