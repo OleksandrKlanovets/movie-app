@@ -1,6 +1,6 @@
 <h1 align="center">Movie App</h1>
 <p align="center">
-  An app to browse movies (test assignment solution for WebbyLab)
+  An app to browse movies
 </p>
 
 ## Table of contents
