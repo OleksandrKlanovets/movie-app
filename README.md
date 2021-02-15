@@ -7,7 +7,7 @@
 
 ![Main page](/resources/images/mainPage.png)
 
-This app is a test assigment solution for Junior Node.js developer position at WebbyLab. The app implements the following functionality:
+This app is a test assignment solution for the Junior Node.js developer position at WebbyLab. The app implements the following functionality:
 
 - Adding a movie;
 - Deleting a movie;
@@ -34,7 +34,7 @@ This app is a test assigment solution for Junior Node.js developer position at W
 The data model is not that complicated in this task. However, there're some ambiguous points:
 
 - Can we consider a movie title and the release year to be a composite primary key for a movie relation? There're a lot of examples of movies with the same title (for instance, consider such titles as Employee Of The Month (2005) (2006)). Though I haven't found the movies with the same title and release year, there's a chance such movies exist (especially when talking about indie movies).
-- We also cannot consider actors names to be the primary key for an actor relation, but for this task I decided to make a name field unique, so that it is possible to tell when we're reffering to the same actor.
+- We also cannot consider actors' names to be the primary key for an actor relation, but for this task, I decided to make a name field unique, so that it is possible to tell when we're referring to the same actor.
 
 So here is the model I've come up with:
 
@@ -44,8 +44,8 @@ So here is the model I've come up with:
 
 The server-side implements the layered architecture. The layers include:
 
-- **Domain models.** These are Movie, Actor and MovieActor (as a junction model) models. Implement the domain business logic.
-- **Service layer.** Includes MovieService, which contains the application business logic implemented by combining the domain logic into certain use-cases and data validation via validation schemas;
+- **Domain models.** These are Movie, Actor, and MovieActor (as a junction model) models. This layer implements the domain business logic.
+- **Service layer.** Includes MovieService, which contains the application business logic implemented by combining the domain logic into certain use-cases and data validation via the validation schemas;
 - **Controllers.** Dispatch request handling to services and handle the proper responses.
 
 ### Additional features
