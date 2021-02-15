@@ -11,6 +11,10 @@
     "eslint:test": "npx eslint --env mocha ./test --ext .js --rule strict:0",
     "test": "mocha"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexanderKlanovets/movie-app.git"
+  },
   "keywords": [],
   "author": "Alexander Klanovets <alex.klanovets@gmail.com>",
   "license": "ISC",
