@@ -19,7 +19,7 @@
 
 ![Main page](/resources/images/mainPage.png)
 
-This app is a test assignment solution for the Junior Node.js developer position at WebbyLab. The app implements the following functionality:
+This app is a test assignment solution for the Junior Node.js developer position. The app implements the following functionality:
 
 - Adding a movie;
 - Deleting a movie;
