@@ -3,6 +3,18 @@
   An app to browse movies (test assignment solution for WebbyLab)
 </p>
 
+## Table of contents
+
+1. [Decription](#description)
+2. [Technological stack and dependencies](#technological-stack-and-dependencies)
+3. [Backend description](#backend-description)
+    - [Data model](#data-model)
+    - [Architecture](#architecture)
+    - [Additional features](#additional-features)
+4. [Installation](#installation)
+    - [Production mode](#production-mode)
+    - [Development mode](#development-mode)
+
 ## Description
 
 ![Main page](/resources/images/mainPage.png)
