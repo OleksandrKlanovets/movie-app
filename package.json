@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production node src/server/app.js",
-    "start:dev": "NODE_ENV=development node src/server/app.js",
-    "start:dev:watch": "NODE_ENV=development nodemon src/server/app.js",
+    "start:dev": "NODE_ENV=development nodemon src/server/app.js",
     "eslint:server": "npx eslint --env node ./src/server ./migrations --ext .js --rule strict:0",
     "eslint:client": "npx eslint ./src/client --ext .js,.jsx",
     "eslint:test": "npx eslint --env mocha ./test --ext .js --rule strict:0",
@@ -16,6 +15,7 @@
   "author": "Alexander Klanovets <alex.klanovets@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "joi": "^17.4.0",

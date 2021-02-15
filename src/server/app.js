@@ -2,6 +2,7 @@
 
 const express = require('express');
 const { json, urlencoded } = require('express');
+const cors = require('cors');
 
 const appConfig = require('./config');
 const dbConfig = require('./config/dbConfig');
@@ -25,6 +26,7 @@ const movieRouter = getMovieRouter(movieController);
 
 const app = express();
 
+app.use(cors());
 app.use(urlencoded({ extended: true }));
 app.use(json());
 app.use('/api', movieRouter);
