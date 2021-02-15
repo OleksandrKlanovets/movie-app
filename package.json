@@ -1,7 +1,7 @@
 {
   "name": "movie-app",
   "version": "1.0.0",
-  "description": "An app to browse movies (test assignment solution for WebbyLab)",
+  "description": "An app to browse movies",
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production node src/server/app.js",
