@@ -83,6 +83,7 @@ $ npx sequelize-cli db:migrate
 4. Build the client:
 
 ```bash
+$ npm i
 $ cd src/client
 $ npm run build
 ```
@@ -109,14 +110,15 @@ $ docker run --add-host host.docker.internal:host-gateway  -p 80:80 -p 443:443 -
 1. Perform the steps 1-3 from Production mode. In development mode you need to specify the development configuration for the server inside ```src/server/config```. To run the server in dev mode execute the following command (it will use nodemon to watch the file system):
 
 ```bash
-npm run start:dev
+$ npm run start:dev
 ```
 
 2. To run the client in dev mode:
 
 ```bash
-cd src/client
-npm start
+$ npm i
+$ cd src/client
+$ npm start
 ```
 
 **Warning**: Please make sure that the proxy value inside the client's package.json corresponds to the actual server.
