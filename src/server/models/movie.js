@@ -60,7 +60,14 @@ class Movie extends Base {
   }
 
   static async getSortedList() {
-    return this.findAll({ order: [['title', 'ASC']] });
+    return this.findAll({
+      order: [
+        [
+          Sequelize.fn('lower', Sequelize.col('title')),
+          'ASC',
+        ],
+      ],
+    });
   }
 
   static async findByTitle(title) {
