@@ -71,7 +71,14 @@ class Movie extends Base {
   }
 
   static async findByTitle(title) {
-    const movies = await this.findAll({ where: { title } });
+    const movies = await this.findAll({
+      where: {
+        title: Sequelize.where(
+          Sequelize.fn('LOWER', Sequelize.col('title')),
+          'LIKE', '%' + title.toLowerCase() + '%',
+        ),
+      },
+    });
 
     if (!movies || !movies.length) {
       throw new NotFoundError(
