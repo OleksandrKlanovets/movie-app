@@ -4,7 +4,7 @@ import { Button, makeStyles, MenuItem, TextField } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   form: {
-    padding: '30px',
+    padding: '10px 30px 20px 30px',
   },
   criterion: {
     width: '20%',
@@ -29,10 +29,16 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: '0',
     },
   },
+  showAllBtn: {
+    marginTop: '20px',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+    },
+  }
 }));
 
 export default function MoviesSearch(props) {
-  const { handleSearch } = props;
+  const { handleSearch, fetchList } = props;
   const [searchCriterion, setSearchCriterion] = React.useState('title');
   const [searchValue, setSearchValue] = React.useState('');
 
@@ -42,6 +48,11 @@ export default function MoviesSearch(props) {
 
   const handleSearchValueChange = (event) => {
     setSearchValue(event.target.value);
+  }
+
+  const refreshList = async () => {
+    await fetchList();
+    setSearchValue('');
   }
 
   const classes = useStyles();
@@ -67,10 +78,17 @@ export default function MoviesSearch(props) {
       >
         Search
       </Button>
+      <Button
+        variant="outlined" color="primary" margin="normal"
+        className={classes.showAllBtn} onClick={refreshList}
+      >
+        Show all
+      </Button>
     </form>
   );
 }
 
 MoviesSearch.propTypes = {
   handleSearch: PropTypes.func.isRequired,
+  fetchList: PropTypes.func.isRequired,
 };

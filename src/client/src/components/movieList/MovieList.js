@@ -16,13 +16,14 @@ const useStyles = makeStyles((theme) => ({
 export default function MovieList() {
   const [movieList, setMovieList] = React.useState([]);
 
+  const fetchList = async () => {
+    const res = await fetch('/api/movies');
+    const list = await res.json();
+    setMovieList(list);
+  } 
+
   React.useEffect(() => {
-    async function fetchData() {
-      const res = await fetch('/api/movies');
-      const list = await res.json();
-      setMovieList(list);
-    }
-    fetchData();
+    fetchList();
   }, []);
 
   const handleSearch = async (event) => {
@@ -47,7 +48,7 @@ export default function MovieList() {
       <Typography variant="h4" align="center">
         Movie list
       </Typography>
-      <MoviesSearch handleSearch={handleSearch} />
+      <MoviesSearch handleSearch={handleSearch} fetchList={fetchList} />
       <Divider />
       <List>
         {
