@@ -8,6 +8,15 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import LocalMoviesIcon from '@material-ui/icons/LocalMovies';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+  movieTitleLink: {
+    textDecoration: 'none',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+  },
+}));
 
 export default function MovieItem(props) {
   const { movieData, setMovieList } = props;
@@ -25,6 +34,8 @@ export default function MovieItem(props) {
     }
   };
 
+  const classes = useStyles();
+
   return (
     <ListItem>
       <ListItemAvatar>
@@ -32,7 +43,7 @@ export default function MovieItem(props) {
           <LocalMoviesIcon />
         </Avatar>
       </ListItemAvatar>
-      <Link to={`/movie/${movieData.id}`} style={{ textDecoration: 'none' }}>
+      <Link to={`/movie/${movieData.id}`} className={classes.movieTitleLink}>
         <ListItemText
           primary={movieData.title}
           secondary={`Release year: ${movieData.year}. Format: ${movieData.format}`}
