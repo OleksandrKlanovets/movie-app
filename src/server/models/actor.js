@@ -42,7 +42,12 @@ class Actor extends Base {
 
   static async getActorMovies(actorName) {
     const actorMovies = await this.findOne({
-      where: { name: actorName },
+      where: {
+        name: Sequelize.where(
+          Sequelize.fn('LOWER', Sequelize.col('name')),
+          'LIKE', '%' + actorName.toLowerCase() + '%',
+        ),
+      },
       include: {
         association: 'Movies',
         through: {
