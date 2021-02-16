@@ -5,10 +5,9 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
 import LocalMoviesIcon from '@material-ui/icons/LocalMovies';
-import DeleteIcon from '@material-ui/icons/Delete';
 import { makeStyles } from '@material-ui/core';
+import DeleteMovieButton from './DeleteMovieButton';
 
 const useStyles = makeStyles((theme) => ({
   movieTitleLink: {
@@ -21,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 export default function MovieItem(props) {
   const { movieData, setMovieList } = props;
 
-  const handleDelete = async (event, id) => {
+  const handleDelete = async (id) => {
     const res = await fetch(`/api/movies/${id}`, {
       method: 'DELETE',
     });
@@ -50,12 +49,11 @@ export default function MovieItem(props) {
         />
       </Link>
       <ListItemSecondaryAction>
-        <IconButton
-          edge="end" aria-label="delete"
-          onClick={(event) => handleDelete(event, movieData.id)}
-        >
-          <DeleteIcon />
-        </IconButton>
+        <DeleteMovieButton
+          movieId={movieData.id}
+          movieTitle={movieData.title}
+          handleDelete={handleDelete}
+        />
       </ListItemSecondaryAction>
     </ListItem>
   );
