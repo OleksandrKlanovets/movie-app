@@ -95,8 +95,8 @@ $ npx sequelize-cli db:migrate
 4. Build the client:
 
 ```bash
-$ npm i
 $ cd src/client
+$ npm i
 $ npm run build
 ```
 
