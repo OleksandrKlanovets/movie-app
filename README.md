@@ -100,13 +100,15 @@ $ cd src/client
 $ npm run build
 ```
 
-5. Run the server. **Warning**: you also need to setup the logger, which initializes inside ```src/server/app.js```. You need to provide a valid log path. Command to run the server (from the root directory):
+5. Run the server:
 
 ```bash
 $ npm run start
 ```
 
-6. Build a Docker image with Nginx and run it (from the root directory). At least these commands are valid for the Ubuntu:
+**Warning**: Remember to initialize the environment variables.
+
+6. Build a Docker image with Nginx and run it (from the project's root directory). At least these commands are valid for the Ubuntu:
 
 ```bash
 $ docker build -t 1.0.0 .
@@ -119,17 +121,19 @@ $ docker run --add-host host.docker.internal:host-gateway  -p 80:80 -p 443:443 -
 
 ### Development mode
 
-1. Perform the steps 1-3 from Production mode. In development mode you need to specify the development configuration for the server inside ```src/server/config```. To run the server in dev mode execute the following command (it will use nodemon to watch the file system):
+1. Perform the steps 1-3 from Production mode. To run the server in dev mode execute the following command (it will use nodemon to watch the file system):
 
 ```bash
 $ npm run start:dev
 ```
 
-2. To run the client in dev mode:
+**Warning**: Remember to initialize the environment variables.
+
+2. To run the client in dev mode (you need to go to the client's folder, use the first command below if you are in the project's root folder):
 
 ```bash
-$ npm i
 $ cd src/client
+$ npm i
 $ npm start
 ```
 
