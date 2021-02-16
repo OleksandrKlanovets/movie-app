@@ -45,7 +45,7 @@ class Actor extends Base {
       where: {
         name: Sequelize.where(
           Sequelize.fn('LOWER', Sequelize.col('name')),
-          'LIKE', '%' + actorName.toLowerCase() + '%',
+          'LIKE', `%${actorName.toLowerCase()}%`,
         ),
       },
       include: {

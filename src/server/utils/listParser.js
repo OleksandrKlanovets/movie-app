@@ -3,7 +3,7 @@
 const { ValidationError } = require('joi');
 const Joi = require('joi');
 const {
-  WrongParameterValueError, InvalidFileFormatError
+  WrongParameterValueError, InvalidFileFormatError,
 } = require('../errors');
 const { movieValidationSchema } = require('../schemas/movieValidationSchema');
 

@@ -75,7 +75,7 @@ class Movie extends Base {
       where: {
         title: Sequelize.where(
           Sequelize.fn('LOWER', Sequelize.col('title')),
-          'LIKE', '%' + title.toLowerCase() + '%',
+          'LIKE', `%${title.toLowerCase()}%`,
         ),
       },
     });
