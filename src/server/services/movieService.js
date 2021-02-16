@@ -72,7 +72,7 @@ class MovieService {
     } = movieData;
 
     const addedMovie = await this.movieModel.addMovie(
-      { title, year, format },
+      { title: title.trim(), year, format },
     );
 
     await this.actorModel.addMultipleActors(
