@@ -29,7 +29,7 @@ export default function AddMovie() {
       <Divider />
       <div className={classes.form}>
         <Typography variant="h5" align="center">
-          You can also import movie list from a file
+          You can also import movie list from a .txt file
         </Typography>
         <ImportMoviesForm />
       </div>

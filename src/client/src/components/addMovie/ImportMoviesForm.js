@@ -46,6 +46,7 @@ export default function ImportMoviesForm() {
           onChange={handleFileSelection}
           name="moviesFile"
           type="file"
+          accept=".txt"
           hidden
           required
         />
