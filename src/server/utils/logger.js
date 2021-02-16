@@ -10,6 +10,7 @@ class Logger {
   constructor(logPath) {
     const date = new Date().toISOString().substring(0, DATE_ONLY_LENGTH);
     const filePath = path.resolve(path.join(logPath, `${date}.log`));
+    fs.accessSync(filePath, fs.constants.R_OK | fs.constants.W_OK);
     this.stream = fs.createWriteStream(filePath, { flags: 'a' });
   }
 

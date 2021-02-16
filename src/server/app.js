@@ -18,8 +18,21 @@ const {
 } = initModels(dbConfig[appConfig.NODE_ENV]);
 const movieService = new MovieService(Movie, Actor, MovieActor);
 
-const LOGS_PATH = 'logs';
-const logger = new Logger(LOGS_PATH);
+const initLogger = () => {
+  try {
+    return new Logger(appConfig.LOGS_PATH);
+  } catch (error) {
+    console.log(`Unavailable path for logger: ${appConfig.LOGS_PATH}.\n`);
+    console.log('Using console as default logger.');
+    return {
+      log: console.log,
+      error: console.error,
+      close: () => {},
+    };
+  }
+}
+
+const logger = initLogger();
 
 const movieController = new MovieController(movieService, logger);
 const movieRouter = getMovieRouter(movieController);
