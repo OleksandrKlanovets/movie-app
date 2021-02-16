@@ -8,10 +8,10 @@ const {
 const { movieValidationSchema } = require('../schemas/movieValidationSchema');
 
 const KEYS = {
-  'Title': 'title',
+  Title: 'title',
   'Release Year': 'year',
-  'Format': 'format',
-  'Stars': 'actors',
+  Format: 'format',
+  Stars: 'actors',
 };
 
 const parseActors = (actorsString) => actorsString

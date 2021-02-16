@@ -30,7 +30,7 @@ const initLogger = () => {
       close: () => {},
     };
   }
-}
+};
 
 const logger = initLogger();
 
