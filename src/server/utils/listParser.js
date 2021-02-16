@@ -7,15 +7,24 @@ const {
 } = require('../errors');
 const { movieValidationSchema } = require('../schemas/movieValidationSchema');
 
-const KEYS = ['title', 'year', 'format', 'actors'];
+const KEYS = {
+  'Title': 'title',
+  'Release Year': 'year',
+  'Format': 'format',
+  'Stars': 'actors',
+};
+
+const parseActors = (actorsString) => actorsString
+  .split(/,\s*/)
+  .map((name) => name.trim());
 
 const parseItem = (item) => item
   .split('\n')
   .filter((property) => property.length > 1)
-  .reduce((movie, property, i) => {
-    const value = property.split(/:\s*(.+)/)[1];
+  .reduce((movie, property) => {
+    const [key, value] = property.split(/:\s*(.+)/);
     /* eslint-disable-next-line */
-    movie[KEYS[i]] = KEYS[i] === 'actors' ? value.split(/,\s*/) : value;
+    movie[KEYS[key]] = KEYS[key] === 'actors' ? parseActors(value) : value;
     return movie;
   }, {});
 
