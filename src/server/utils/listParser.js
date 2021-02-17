@@ -1,5 +1,6 @@
 'use strict';
 
+const os = require('os');
 const { ValidationError } = require('joi');
 const Joi = require('joi');
 const {
@@ -19,7 +20,7 @@ const parseActors = (actorsString) => actorsString
   .map((name) => name.trim());
 
 const parseItem = (item) => item
-  .split('\n')
+  .split(os.EOL)
   .filter((property) => property.length > 1)
   .reduce((movie, property) => {
     const [key, value] = property.split(/:\s*(.+)/);
@@ -30,7 +31,7 @@ const parseItem = (item) => item
 
 const parser = (buffer) => buffer
   .toString()
-  .split('\n\n')
+  .split(`${os.EOL}${os.EOL}`)
   .filter((item) => item.length > 1)
   .map((item) => Joi.attempt(parseItem(item), movieValidationSchema));
 
